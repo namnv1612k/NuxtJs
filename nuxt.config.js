@@ -23,6 +23,17 @@ export default {
   ** Router
   */
   router: {
+    base: '/',
+    linkExactActiveClass: 'is-current',
+    // middleware: ['check-auth'],
+    extendRoutes (routes) {
+      routes.push(
+        { path: '/', component: '~/pages/Home.vue', name: 'Home' },
+        { path: '/index', component: '~/pages/index.vue', name: 'top' },
+        { path: '/login', component: '~/pages/user/Login.vue', name: 'login' },
+        { path: '/register', component: '~/pages/user/Register.vue', name: 'register' }
+      )
+    }
     // middleware: 'i18n'
   },
   /*

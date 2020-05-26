@@ -1,83 +1,81 @@
 <template>
   <section id="login">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header">
-              {{ $t('button.login') }}
-            </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            {{ $t('button.login') }}
+          </div>
 
-            <div class="card-body">
-              <validate-observer v-slot="{ invalid }" ref="form">
-                <div class="form-group row">
-                  <label for="username" class="col-md-4 col-form-label text-md-right">{{ $t('field.username') }}</label>
+          <div class="card-body">
+            <validate-observer v-slot="{ invalid }" ref="form">
+              <div class="form-group row">
+                <label for="username" class="col-md-4 col-form-label text-md-right">{{ $t('field.username') }}</label>
 
-                  <validate-provider v-slot="{ errors }" rules="required" class="col-md-6">
-                    <input
-                      id="username"
-                      v-model="username"
-                      type="text"
-                      class="form-control"
-                      :class="{ 'is-invalid' : errors[0] != null }"
-                      autocomplete="email"
-                      autofocus
-                    >
-                    <span v-for="error in errors" :key="error" class="invalid-feedback" role="alert">
-                      <strong>{{ error }}</strong>
-                    </span>
-                  </validate-provider>
-                </div>
+                <validate-provider v-slot="{ errors }" rules="required" class="col-md-6">
+                  <input
+                    id="username"
+                    v-model="username"
+                    type="text"
+                    class="form-control"
+                    :class="{ 'is-invalid' : errors[0] != null }"
+                    autocomplete="email"
+                    autofocus
+                  >
+                  <span v-for="error in errors" :key="error" class="invalid-feedback" role="alert">
+                    <strong>{{ error }}</strong>
+                  </span>
+                </validate-provider>
+              </div>
 
-                <div class="form-group row">
-                  <label for="password" class="col-md-4 col-form-label text-md-right">{{ $t('field.password') }}</label>
+              <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right">{{ $t('field.password') }}</label>
 
-                  <validate-provider v-slot="{ errors }" rules="required" class="col-md-6">
-                    <input
-                      id="password"
-                      v-model="password"
-                      type="password"
-                      class="form-control"
-                      :class="{ 'is-invalid' : errors[0] != null}"
-                      name="password"
-                      autocomplete="current-password"
-                    >
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ errors[0] }}</strong>
-                    </span>
-                  </validate-provider>
-                </div>
+                <validate-provider v-slot="{ errors }" rules="required" class="col-md-6">
+                  <input
+                    id="password"
+                    v-model="password"
+                    type="password"
+                    class="form-control"
+                    :class="{ 'is-invalid' : errors[0] != null}"
+                    name="password"
+                    autocomplete="current-password"
+                  >
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ errors[0] }}</strong>
+                  </span>
+                </validate-provider>
+              </div>
 
-                <div class="form-group row">
-                  <div class="col-md-6 offset-md-4">
-                    <div class="form-check">
-                      <input id="remember" class="form-check-input" type="checkbox" name="remember">
+              <div class="form-group row">
+                <div class="col-md-6 offset-md-4">
+                  <div class="form-check">
+                    <input id="remember" class="form-check-input" type="checkbox" name="remember">
 
-                      <label class="form-check-label" for="remember">
-                        {{ $t('field.remember') }}
-                      </label>
-                    </div>
+                    <label class="form-check-label" for="remember">
+                      {{ $t('field.remember') }}
+                    </label>
                   </div>
                 </div>
+              </div>
 
-                <div class="form-group row mb-0">
-                  <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary" :disabled="invalid" @click="login">
-                      {{ $t('button.login') }}
-                    </button>
+              <div class="form-group row mb-0">
+                <div class="col-md-8 offset-md-4">
+                  <button type="submit" class="btn btn-primary" :disabled="invalid" @click="login">
+                    {{ $t('button.login') }}
+                  </button>
 
-                    <nuxt-link to="/forgot-password" class="btn btn-link">
-                      {{ $t('field.forgot_pw') }}
-                    </nuxt-link>
-                  </div>
+                  <nuxt-link to="/forgot-password" class="btn btn-link">
+                    {{ $t('field.forgot_pw') }}
+                  </nuxt-link>
                 </div>
-              </validate-observer>
-            </div>
+              </div>
+            </validate-observer>
           </div>
         </div>
       </div>
-      <notifications position="bottom right" group="foo" />
     </div>
+    <notifications position="bottom right" group="foo" />
   </section>
 </template>
 <script>
